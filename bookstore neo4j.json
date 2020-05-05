@@ -1,1 +1,38 @@
+//Crear los nodos libro//
+create (b1:book {title:"Cien años de soledad", editorial:"sudamericana",saga:"",price:200000}),
+(b2:book {title:"Harry Potter Y El Caliz de Fuego", editorial:"Salamandra",saga:"Harry Potter",price:230000}),
+(b3:book {title:"Harry Potter Y La Camara Secreta", editorial:"Salamandra",saga:"Harry Potter",price:210000}),
+(b4:book {title:"Harry Potter Y La Piedra Filosofal", editorial:"Salamandra",saga:"Harry Potter",price:200000}),
+(b5:book {title:"El código Da Vinci ", editorial:"Random House",saga:"Robert Langdon",price:200000}),
+(b6:book {title:"El principito ", editorial:"Éditions Gallimard",saga:"",price:200000})
 
+//Crear los nodos genero//
+create (g1:genere {name:"Novela"}),
+(g2:genere {name:"Fantástico"}),
+(g3:genere {name:"Misterio"}),
+(g4:genere {name:"Infantil"})
+
+//Crear los nodos autor//
+create (a1:author{name:"Gabriel García Márquez"}),
+(a2:author{name:"J. K. Rowling"}),
+(a3:author{name:"Dan Brown"}),
+(a4:author{name:"Antoine De Saint Exupéry"})
+
+//Asignar el autor a cada libro//
+create (a2)-[:AUTHOR_OF{rol:['Autor']}]->(b2),
+(a2)-[:AUTHOR_OF{rol:['Autor']}]->(b3),
+(a2)-[:AUTHOR_OF{rol:['Autor']}]->(b4),
+(a3)-[:AUTHOR_OF{rol:['Autor']}]->(b5),
+(a1)-[:AUTHOR_OF{rol:['Autor']}]->(b1),
+(a4)-[:AUTHOR_OF{rol:['Autor']}]->(b6)
+
+//Asignar el genero a cada libro//
+create (g1)-[:GENERE_OF{rol:['Genero']}]->(b1),
+(g2)-[:GENERE_OF{rol:['Autor']}]->(b2),
+(g2)-[:GENERE_OF{rol:['Autor']}]->(b3),
+(g2)-[:GENERE_OF{rol:['Autor']}]->(b4),
+(g3)-[:GENERE_OF{rol:['Autor']}]->(b5),
+(g4)-[:GENERE_OF{rol:['Autor']}]->(b6)
+
+//Mostrar las asiganaciones//
+MATCH (n) RETURN n
