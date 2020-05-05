@@ -1,5 +1,5 @@
 <?php
-include ('../connection/connection.php');
+include ('../controller/connection.php');
 include ('../model/book.php');
 
 if (isset ($_POST["title"])){
